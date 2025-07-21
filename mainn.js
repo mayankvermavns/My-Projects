@@ -16,7 +16,7 @@ function loadSubjects() {
         .then(subjectss => {
             screen.innerHTML = '<h2>select subject</h2>';
             subjectss.forEach(sub => {
-                const btn = document.createElement(' button')
+                const btn = document.createElement('button');
                 btn.textContent = sub.subjectName;
                 btn.onclick = () => {
                     state.quizListUrl = sub.quizListUrl;
@@ -28,10 +28,28 @@ function loadSubjects() {
         });
 }
 
-function loadQuizzes() {
+function loadQuizQuestions() {
     fetch(state.quizListUrl)
         .then(res => res.json())
         .then(quizzes => {
+            screen.innerHTML = `<h2>${state.subjectName}:select quize</h2>`;
+            quizzes.forEach(quiz => {
+                const btn = document.createElement('button');
+                btn.textContent = quiz.quizName;
+                btn.onclick = () => {
+                    state.quizListUrl = quiz.quizListUrl;
+                    state.quizName = quiz.quizName;
+                    loadQuizQuestions()
+                };
+                screen.appendChild(btn);
+            });
+        });
+}
+
+function loadQuizQuestions() {
+    fetch(state.quizUrl)
+        .then(res => res.jsonj())
+        .then(questions => {
             state.questions = questions;
             state.currentIndex = 0;
             state.score = 0;
@@ -64,7 +82,7 @@ function showResult() {
     <h>Quiz Complete!</h2>
     <p><strong>${state.quizName}</strong></p>
     <p>your score: ${state.score}/${state.questions.length}</p>
-    <button onclisk="loadSubjects()">Restart</utton
+    <button onclick="loadSubjects()">Restart</button
     `;
 }
 loadSubjects();
