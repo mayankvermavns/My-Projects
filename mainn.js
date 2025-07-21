@@ -23,12 +23,12 @@ function loadSubjects() {
                     state.subjectName = sub.subjectName;
                     loadQuizzes();
                 };
-                screen.appendChild(btn)
+                screen.appendChild(btn);
             });
         });
 }
 
-function loadQuizQuestions() {
+function loadQuizzes() {
     fetch(state.quizListUrl)
         .then(res => res.json())
         .then(quizzes => {
@@ -48,7 +48,7 @@ function loadQuizQuestions() {
 
 function loadQuizQuestions() {
     fetch(state.quizUrl)
-        .then(res => res.jsonj())
+        .then(res => res.json())
         .then(questions => {
             state.questions = questions;
             state.currentIndex = 0;
@@ -73,7 +73,7 @@ function showQuestion() {
                 showResult()
             }
         };
-        screen.appendChild(btn):
+        screen.appendChild(btn);
     });
 }
 
