@@ -1,7 +1,12 @@
 [
-  {
-    "question": "What does JS stand for?",
-    "options": ["JavaScript", "JustScript", "JScript", "Java"],
-    "answer": "JavaScript"
-  }
+    {
+        "question": "What is the value of 7 + 8 × 2?",
+        "options": [
+            "44",
+            "23",
+            "55",
+            "98"
+        ],
+        "answer": "23"
+    }
 ]
